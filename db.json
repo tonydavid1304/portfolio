@@ -1,0 +1,51 @@
+[{    
+    "about":{
+        "title":"Hello",
+        "desc":"Lorem ipsum"
+    },
+    "skills":[
+        {
+            "skill":"HTML5",
+            "rating":"70"
+        },
+        {
+            "skill":"CSS3",
+            "rating":"70"
+        }
+    ],
+    "projects":[
+        {
+            "title":"Altares",
+            "desc":"Lorem ipsum",
+            "thumb":"./portfolio/images/projects/altares_thumb.jpg",
+            "img":"./portfolio/images/projects/altares.jpg"
+        },
+        {
+            "title":"Verizon",
+            "desc":"Lorem ipsum",
+            "thumb":"./portfolio/images/projects/verizon_thumb.jpg",
+            "img":"./portfolio/images/projects/verizon.jpg"
+        },
+        {
+            "title":"Don Bosco Vaasaappu",
+            "desc":"Lorem ipsum",
+            "thumb":"./portfolio/images/projects/dbv_thumb.jpg",
+            "img":"./portfolio/images/projects/dbv.jpg"
+        }
+    ],
+    "clients":[
+        "./portfolio/images/clients/pearson.jpg",
+        "./portfolio/images/clients/ebay.jpg",
+        "./portfolio/images/clients/altares.jpg",
+        "./portfolio/images/clients/autozone.jpg",
+        "./portfolio/images/clients/daman.jpg",
+        "./portfolio/images/clients/verizon.jpg"
+    ],
+    "contact":{
+        "title":"Contact",
+        "desc":"Feel free to reach out at:",
+        "email":"mailto:mailtonypd@gmail.com",
+        "linkedin":"https://www.linkedin.com/in/tony-p-d/",
+        "github":"https://github.com/tonydavid1304"       
+    }
+}]
