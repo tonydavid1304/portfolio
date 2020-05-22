@@ -12,9 +12,7 @@ import Contact from "./components/Contact.js";
 
 import styled from 'styled-components';
 import ScrollspyNav from "react-scrollspy-nav";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Navbar, Nav } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,20 +20,9 @@ const Div = styled.div`
   min-width: 100%;
 `
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      showNavItems: false
-    }
-  }
-
   componentDidMount(){
     const { getData } = this.props;
     getData();
-  }
-
-  onMenuClick(){
-    
   }
 
   render(){
@@ -48,26 +35,30 @@ class App extends Component {
         {
           !isLoading ? 
             <Fragment>
-             <ScrollspyNav
-                scrollTargetIds={["section_1", "section_2", "section_3","section_4"]}
-                offset={50}
-                activeNavClass="is-active"
-                scrollDuration="1000"
-                headerBackground="true"
-              >
-                <div className="bars" onClick={() => this.onMenuClick}><FontAwesomeIcon icon={faBars} /></div>
-                {                  
-                  window.screen.width < 768 && !this.stete.showNavItems ? null : 
-                  <ul>
-                    <li><a href="/">About</a></li>
-                    <li><a href="#section_1">Skills</a></li>
-                    <li><a href="#section_2">Projects</a></li>
-                    <li><a href="#section_3">Clients</a></li>
-                    <li><a href="#section_4">Contact</a></li>
-                  </ul> 
-                }                               
-              </ScrollspyNav>
-           
+              <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" fixed="top">
+                <Navbar.Brand href="#home"></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav className="mr-auto" style={{margin:"auto"}}>
+                    <ScrollspyNav
+                      scrollTargetIds={["section_1", "section_2", "section_3","section_4"]}
+                      offset={40}
+                      activeNavClass="is-active"
+                      scrollDuration="1000"
+                      headerBackground="true"
+                    >  
+                        <ul>
+                          <li><Nav.Link href="/">About</Nav.Link></li>
+                          <li><Nav.Link href="#section_1">Skills</Nav.Link></li>
+                          <li><Nav.Link href="#section_2">Projects</Nav.Link></li>
+                          <li><Nav.Link href="#section_3">Clients</Nav.Link></li>
+                          <li><Nav.Link href="#section_4">Contact</Nav.Link></li>
+                        </ul>                            
+                    </ScrollspyNav>
+                  </Nav>
+                </Navbar.Collapse>
+              </Navbar>
+
               <Div key="1">
                 <About data={data}/>
                 <div id="section_1"><Skills data={data}/></div>

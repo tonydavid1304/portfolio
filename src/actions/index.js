@@ -17,7 +17,7 @@ const fetchFailure = err => ({
 
 export const getData = () => dispatch => {
     dispatch(fetchBegin);
-    axios.get("./portfolio/db.json")
+    axios.get("./db.json")
     .then(resp => {
       console.log("response",resp.data);
       dispatch(fetchSuccess(resp.data));

@@ -5,11 +5,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.App div[data-nav] {
-    background-color: black;
-    min-width: 100%;
-    position: fixed;
-}
 .App div[data-nav] ul {
     display: flex;
     flex-direction: row;
@@ -19,34 +14,21 @@
     padding: 0;
 }
 .App div[data-nav] li {
-    padding: 10px 20px;
-}
-.App div[data-nav] a {
-    color: #cccccc;
-    padding: 10px 20px;
-    font-size: 14px;
-}
-.App div[data-nav] a:hover {
-    text-decoration: none;
-    color: white;
+  padding: 0 20px;
 }
 .is-active{
   background: #1e1e1e;
-  padding: 10px 20px;
+  color: white !important;
   pointer-events: none;
 }
-.bars {
-  display: none;
+.bg-black{
+  background-color: black;
 }
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .App div[data-nav] ul {
     flex-direction: column;
     text-align: center;
-  }
-  .bars {
-    display: block;
-    text-align: right;
-    margin-right: 5px;
   }
 }
