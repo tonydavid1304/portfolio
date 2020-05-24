@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         {err ? <p>{err.message}</p> : null}
-
+        
         {
           !isLoading ? 
             <Fragment>
@@ -42,18 +42,25 @@ class App extends Component {
                   <Nav className="mr-auto" style={{margin:"auto"}}>
                     <ScrollspyNav
                       scrollTargetIds={["section_1", "section_2", "section_3","section_4"]}
-                      offset={40}
+                      offset={0}
                       activeNavClass="is-active"
                       scrollDuration="1000"
-                      headerBackground="true"
+                      headerBackground="false"
                     >  
-                        <ul>
-                          <li><Nav.Link href="/">About</Nav.Link></li>
-                          <li><Nav.Link href="#section_1">Skills</Nav.Link></li>
-                          <li><Nav.Link href="#section_2">Projects</Nav.Link></li>
-                          <li><Nav.Link href="#section_3">Clients</Nav.Link></li>
-                          <li><Nav.Link href="#section_4">Contact</Nav.Link></li>
-                        </ul>                            
+                      {
+                        data.map((section, index) => {
+                          const {menu} = section;
+                          return (
+                            <ul key={index}>
+                              <li><Nav.Link href="/">{menu[0]}</Nav.Link></li>
+                              <li><Nav.Link href="#section_1">{menu[1]}</Nav.Link></li>
+                              <li><Nav.Link href="#section_2">{menu[2]}</Nav.Link></li>
+                              <li><Nav.Link href="#section_3">{menu[3]}</Nav.Link></li>
+                              <li><Nav.Link href="#section_4">{menu[4]}</Nav.Link></li>
+                            </ul> 
+                          )
+                        })
+                      }                                                  
                     </ScrollspyNav>
                   </Nav>
                 </Navbar.Collapse>

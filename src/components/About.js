@@ -9,6 +9,12 @@ const Div = styled.div`
     justify-content: center;
     align-items: center; 
     background-color: #282c34;
+    background: #000000 url('./images/bg/about.jpg') no-repeat;
+    //background-size: 100% auto;
+    p{
+        text-align: center;
+        width: 70%;
+    }
 `
 const About = (props) => {
     const { data } = props;

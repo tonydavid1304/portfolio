@@ -12,6 +12,8 @@ const Div = styled.div`
     justify-content: center;
     align-items: center; 
     background-color: #000000;
+    background: #000000 url('./images/bg/contact.jpg') no-repeat;
+    //background-size: 100% auto;
 `
 const Icons = styled.div`
     display: flex;

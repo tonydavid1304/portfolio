@@ -1,34 +1,53 @@
 [{    
+    "menu":[
+        "About",
+        "Skills",
+        "Projects",
+        "Clients",
+        "Contact"
+    ],
     "about":{
-        "title":"Hello",
-        "desc":"Lorem ipsum"
+        "title":"Hi, I'm Tony P.D",
+        "desc":"I'm a Frontend developer with creative design skills. I started my career as a Flash developer and now into UI development. I'm eager to learn new technologies."
     },
     "skills":[
         {
             "skill":"HTML5",
-            "rating":"70"
+            "rating":"80"
         },
         {
             "skill":"CSS3",
+            "rating":"75"
+        },
+        {
+            "skill":"BootStrap",
             "rating":"70"
+        },
+        {
+            "skill":"ReactJs",
+            "rating":"80"
+        },
+        {
+            "skill":"Angular",
+            "rating":"60"
         }
     ],
     "projects":[
         {
             "title":"Altares",
-            "desc":"Lorem ipsum",
+            "desc":"We reengineered a web portal for Altares, a single data source for Belgium, Netherlands and Luxembourg markets to provide data/products loaded from different sources like bulk uploads and manual data entry application. Users can view / modify financial and legal data related to individuals and businesses. Worked on Frontend functionalities using Angular, HTML5, CSS3 and BootStrap. ",
             "thumb":"./images/projects/altares_thumb.jpg",
             "img":"./images/projects/altares.jpg"
         },
         {
             "title":"Verizon",
-            "desc":"Lorem ipsum",
+            "desc":"Verizon wireless project involved migration of AEM content to responsive HTML design. Worked on HTML, CSS, and jQuery. Work involved making the page responsive, creating interactive components and fixing UI defects.",
             "thumb":"./images/projects/verizon_thumb.jpg",
             "img":"./images/projects/verizon.jpg"
         },
         {
             "title":"Don Bosco Vaasaappu",
-            "desc":"Lorem ipsum",
+            "desc":"Don Bosco Vaasaappu is a website based on a cultural event held in Sri lanka to raise funds. The website was build responsively to support most devies. Powered using AngularJs, jQuery, HTML, CSS and BootStrap.",
             "thumb":"./images/projects/dbv_thumb.jpg",
             "img":"./images/projects/dbv.jpg"
         }
@@ -43,7 +62,7 @@
     ],
     "contact":{
         "title":"Contact",
-        "desc":"Feel free to reach out at:",
+        "desc":"Feel free to reach out to me at:",
         "email":"mailto:mailtonypd@gmail.com",
         "linkedin":"https://www.linkedin.com/in/tony-p-d/",
         "github":"https://github.com/tonydavid1304"       

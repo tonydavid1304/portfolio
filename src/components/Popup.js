@@ -6,6 +6,9 @@ const Img = styled.img`
   max-width: 100%;
   height: auto;
 `
+const P = styled.p`
+  margin-top: 10px;
+`
 
 const Popup = (props) => {
   const {title, desc, img} = props;
@@ -21,13 +24,13 @@ const Popup = (props) => {
           {title}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body closeButton>
         <Img src={img} alt={title} />
-        <p>{desc}</p>
+        <P>{desc}</P>
       </Modal.Body>
-      <Modal.Footer>
-        {/* <Button onClick={props.onHide}>Close</Button> */}
-      </Modal.Footer>
+      {/* <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button> 
+      </Modal.Footer>*/}
     </Modal>
   );
 }

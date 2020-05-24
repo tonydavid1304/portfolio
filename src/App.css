@@ -5,6 +5,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App {
+  animation: fadein 2s;
+}
+@keyframes fadein {
+  from { opacity: 0}
+  to   { opacity: 1}
+}
 .App div[data-nav] ul {
     display: flex;
     flex-direction: row;
@@ -15,6 +22,9 @@
 }
 .App div[data-nav] li {
   padding: 0 20px;
+}
+.App div[data-nav] a {
+  font-size: 14px;
 }
 .is-active{
   background: #1e1e1e;

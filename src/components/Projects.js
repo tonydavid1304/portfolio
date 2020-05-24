@@ -6,10 +6,12 @@ const Div = styled.div`
     display: flex;
     flex-direction: column;
     min-width: 100%;
-    min-height: 110vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center; 
     background-color: #1f1f1e;
+    background: #000000 url('./images/bg/projects.jpg') no-repeat;
+    //background-size: 100% auto;
 `
 const Images = styled.div`
     display: flex;
