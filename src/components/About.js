@@ -4,13 +4,17 @@ import styled from 'styled-components';
 const Div = styled.div`    
     display: flex;
     flex-direction: column;
-    min-width: 100%;
+    width: 100%;
+    //height: 100vh;
     min-height: 100vh;
-    justify-content: center;
-    align-items: center; 
+    //justify-content: center;
+    align-items: center;     
     background-color: #282c34;
-    background: #000000 url('./images/bg/about.jpg') no-repeat;
+    background: #000000 url('./images/bg/about.jpg') no-repeat top center;
     //background-size: 100% auto;
+    h1{
+        margin-top: 35vh;
+    }
     p{
         text-align: center;
         width: 70%;

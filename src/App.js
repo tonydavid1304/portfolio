@@ -16,6 +16,47 @@ import { Navbar, Nav } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  overflow-x: hidden;
+  animation: fadein 2s;
+  div[data-nav] ul {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+  }
+  div[data-nav] li {
+    padding: 0 20px;
+  }
+  div[data-nav] a {
+    font-size: 0.6em;
+  }
+  .is-active{
+    background: #1e1e1e;
+    color: white !important;
+    pointer-events: none;
+  }
+  .bg-black{
+    background-color: black;
+  }
+
+  @media only screen and (max-width: 767px) {
+    div[data-nav] ul {
+      flex-direction: column;
+      text-align: center;
+    }
+    div[data-nav] a {
+      font-size: 1.5em;
+    }
+  }
+`
 const Div = styled.div`
   min-width: 100%;
 `
@@ -29,13 +70,13 @@ class App extends Component {
     const { data, isLoading, err } = this.props;
     
     return (
-      <div className="App">
+      <Main>
         {err ? <p>{err.message}</p> : null}
         
         {
           !isLoading ? 
             <Fragment>
-              <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" fixed="top">
+              <Navbar collapseOnSelect expand="md" bg="black" variant="dark" fixed="top">
                 <Navbar.Brand href="#home"></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -77,7 +118,7 @@ class App extends Component {
           :
             <p>loading..</p>
         }              
-      </div>
+      </Main>
     );
   }
   

@@ -7,13 +7,17 @@ import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 const Div = styled.div`    
     display: flex;
     flex-direction: column;
-    min-width: 100%;
+    width: 100%;
+    //height: 100vh;
     min-height: 100vh;
-    justify-content: center;
+    //justify-content: center;
     align-items: center; 
     background-color: #000000;
-    background: #000000 url('./images/bg/contact.jpg') no-repeat;
+    background: #000000 url('./images/bg/contact.jpg') no-repeat top center;
     //background-size: 100% auto;
+    h1{
+        margin-top: 35vh;
+    }
 `
 const Icons = styled.div`
     display: flex;

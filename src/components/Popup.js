@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal } from "react-bootstrap";
 import styled from 'styled-components';
+import "./popup.css";
 
 const Img = styled.img`
   max-width: 100%;
@@ -24,7 +25,7 @@ const Popup = (props) => {
           {title}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body closeButton>
+      <Modal.Body>
         <Img src={img} alt={title} />
         <P>{desc}</P>
       </Modal.Body>

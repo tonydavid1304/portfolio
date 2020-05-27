@@ -5,13 +5,22 @@ import Popup from './Popup';
 const Div = styled.div`    
     display: flex;
     flex-direction: column;
-    min-width: 100%;
+    width: 100%;
+    //height: 100vh;
     min-height: 100vh;
-    justify-content: center;
+    //justify-content: center;
     align-items: center; 
     background-color: #1f1f1e;
-    background: #000000 url('./images/bg/projects.jpg') no-repeat;
+    background: #000000 url('./images/bg/projects.jpg') no-repeat top center;
     //background-size: 100% auto;
+    h1{
+        margin-top: 25vh;
+    }
+    @media only screen and (max-width: 600px) {
+        h1{
+            margin-top: 10vh;
+        }
+    }
 `
 const Images = styled.div`
     display: flex;

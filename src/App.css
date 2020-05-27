@@ -1,44 +1,4 @@
-.App {  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.App {
-  animation: fadein 2s;
-}
 @keyframes fadein {
   from { opacity: 0}
   to   { opacity: 1}
-}
-.App div[data-nav] ul {
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-}
-.App div[data-nav] li {
-  padding: 0 20px;
-}
-.App div[data-nav] a {
-  font-size: 14px;
-}
-.is-active{
-  background: #1e1e1e;
-  color: white !important;
-  pointer-events: none;
-}
-.bg-black{
-  background-color: black;
-}
-
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  .App div[data-nav] ul {
-    flex-direction: column;
-    text-align: center;
-  }
 }
