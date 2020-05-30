@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Spring } from "react-spring/renderprops";
+import VisibilitySensor from "./VisibilitySensor";
+
 const Div = styled.div`    
     display: flex;
     flex-direction: column;
@@ -26,9 +29,33 @@ const About = (props) => {
         data.map(section => {
             const {about} = section;
             return (
-                <Div key={"about"}>
-                    <h1>{about.title}</h1>
-                    <p>{about.desc}</p>
+                <Div key={"about"}>                    
+                     <VisibilitySensor once>
+                        {({ isVisible }) => (
+                            <>
+                                <Spring delay={300} 
+                                from={{                                                                
+                                    transform: "scale(2)",
+                                }}
+                                to={{
+                                    opacity: isVisible ? 1 : 0,
+                                    transform: "scale(1)"                                
+                                }}>
+                                    {(props) => (
+                                        <h1 style={{ ...props }}>{about.title}</h1>
+                                    )}
+                                </Spring>  
+                                <Spring delay={800} to={{
+                                    opacity: isVisible ? 1 : 0,
+                                    transform: isVisible ? "scale(1)" : "scale(0.5)"
+                                }}>
+                                    {(props) => (
+                                        <p style={{ ...props }}>{about.desc}</p>
+                                    )}
+                                </Spring>
+                            </>  
+                        )}
+                    </VisibilitySensor>
                 </Div>
             )
         })

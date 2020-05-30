@@ -1,6 +1,8 @@
 import React from 'react';
 import { ProgressBar } from "react-bootstrap";
 import styled from 'styled-components';
+import { Spring } from "react-spring/renderprops";
+import VisibilitySensor from "./VisibilitySensor";
 
 const Div = styled.div`    
     display: flex;
@@ -33,24 +35,45 @@ const Skills = (props) => {
     }
     return (
         data.map((section, index) => {
-            const {skills} = section;
+            const {menu, skills} = section;
             const colors = ["info","warning", "","success","danger"];
 
             return (
-                <Div key={"skills"} >
-                    <h1>Skills</h1>
-                    <ul style={barStyle}>
-                    {
-                        skills.map((item,index) => {
-                            return (
-                                <li key={index}>
-                                    <em>{item.skill}</em>
-                                    <ProgressBar variant={colors[index]} now={item.rating} />                      
-                                </li>
-                            )
-                        })                    
-                    }                                            
-                    </ul>
+                <Div key={"skills"} >                   
+
+                    <VisibilitySensor once>
+                        {({ isVisible }) => (
+                            <>
+                                <Spring delay={300} to={{
+                                    opacity: isVisible ? 1 : 0,
+                                    transform: isVisible
+                                    ? "scale(1)"
+                                    : "scale(2)",
+                                }}>
+                                    {(props) => (
+                                        <h1 style={{ ...props }}>{menu[1]}</h1>
+                                    )}
+                                </Spring> 
+                                <ul style={barStyle}>
+                                {
+                                    skills.map((item,index) => {
+                                        return (
+                                            <li key={index}>                                                        
+                                                <em>{item.skill}</em>
+                                                <Spring
+                                                    delay={50 * (index+1)}                                    
+                                                    to={{ number: isVisible ? 1 : 0 }}>
+                                                    {props => <ProgressBar variant={colors[index]} now={item.rating * props.number} />}
+                                                </Spring>                                                       
+                                                                                                       
+                                            </li>
+                                        )
+                                    })                    
+                                }                                            
+                                </ul>                                 
+                            </>  
+                        )}
+                    </VisibilitySensor>                    
                 </Div>
             )
         })

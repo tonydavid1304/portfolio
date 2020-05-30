@@ -19,7 +19,7 @@ export const getData = () => dispatch => {
     dispatch(fetchBegin);
     axios.get("./db.json")
     .then(resp => {
-      console.log("response",resp.data);
+      //console.log("response",resp.data);
       dispatch(fetchSuccess(resp.data));
     })
     .catch(err => {

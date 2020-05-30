@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Spring } from "react-spring/renderprops";
+import VisibilitySensor from "./VisibilitySensor";
+
 const Div = styled.div`    
     display: flex;
     flex-direction: column;
@@ -36,21 +39,44 @@ const Clients = (props) => {
 
     return (
         data.map(section => {
-            const {clients} = section;
+            const {menu, clients} = section;
             return (
                 <Div key={"clients"}>
-                    <h1>Clients</h1>
-                    <Images>
-                    {
-                        clients.map((item, index) => {                         
-                            return (   
-                                <Wrapper key={index}>    
-                                    <img src={item} alt="" />
-                                </Wrapper>
-                            )
-                        })                    
-                    }   
-                    </Images>             
+                    <VisibilitySensor once>
+                        {({ isVisible }) => (
+                            <>
+                                <Spring delay={300} to={{
+                                    opacity: isVisible ? 1 : 0,
+                                    transform: isVisible
+                                    ? "scale(1)"
+                                    : "scale(2)",
+                                }}>
+                                    {(props) => (
+                                        <h1 style={{ ...props }}>{menu[3]}</h1>
+                                    )}
+                                </Spring> 
+
+                                <Images>
+                                {
+                                    clients.map((item, index) => {                         
+                                        return (   
+                                            <Spring key={"s"+index} delay={300 * (index+1)} to={{
+                                                opacity: isVisible ? 1 : 0,
+                                                transform: isVisible ? "scale(1)" : "scale(0.5)"
+                                            }}>
+                                                {(props) => (
+                                                     <Wrapper style={{ ...props }} key={index}>                  
+                                                        <img src={item} alt="" />
+                                                    </Wrapper>
+                                                )}
+                                            </Spring>                                            
+                                        )
+                                    })                    
+                                }   
+                                </Images>   
+                            </>  
+                        )}
+                    </VisibilitySensor>                    
                 </Div>
             )
         })

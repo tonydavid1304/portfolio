@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Popup from './Popup';
 
+import { Spring } from "react-spring/renderprops";
+import VisibilitySensor from "./VisibilitySensor";
+
 const Div = styled.div`    
     display: flex;
     flex-direction: column;
@@ -56,21 +59,44 @@ const Projects = (props) => {
 
     return (
         data.map((section, index) => {
-            const {projects} = section;
+            const {menu, projects} = section;
             return (
                 <Div key={"projects"}>
-                    <h1>Projects</h1>
-                    <Images>
-                    {
-                        projects.map((item,index) => {
-                            return (     
-                                <Wrapper key={index}>                  
-                                    <img src={item.thumb} alt={item.title} onClick={() => onImgClick(item.title, item.desc, item.img)} />
-                                </Wrapper>
-                            )
-                        })                    
-                    }   
-                    </Images>   
+                     <VisibilitySensor once>
+                        {({ isVisible }) => (
+                            <>
+                                <Spring delay={300} to={{
+                                    opacity: isVisible ? 1 : 0,
+                                    transform: isVisible
+                                    ? "scale(1)"
+                                    : "scale(2)",
+                                }}>
+                                    {(props) => (
+                                        <h1 style={{ ...props }}>{menu[2]}</h1>
+                                    )}
+                                </Spring> 
+                   
+                                <Images>
+                                {
+                                    projects.map((item,index) => {
+                                        return (    
+                                            <Spring key={"s"+index} delay={300 * (index+1)} to={{
+                                                opacity: isVisible ? 1 : 0,
+                                                transform: isVisible ? "scale(1) rotateY(0)" : "scale(0.5) rotateY(180deg)"
+                                            }}>
+                                                {(props) => (
+                                                     <Wrapper style={{ ...props }} key={index}>                  
+                                                        <img src={item.thumb} alt={item.title} onClick={() => onImgClick(item.title, item.desc, item.img)} />
+                                                    </Wrapper>
+                                                )}
+                                            </Spring>                                             
+                                        )
+                                    })                    
+                                }   
+                                </Images>
+                          </>  
+                        )}
+                    </VisibilitySensor>      
 
                     <Popup
                         title={title}

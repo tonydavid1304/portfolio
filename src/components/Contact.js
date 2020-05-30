@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
+import { Spring } from "react-spring/renderprops";
+import VisibilitySensor from "./VisibilitySensor";
+
 const Div = styled.div`    
     display: flex;
     flex-direction: column;
@@ -34,24 +37,57 @@ const Icons = styled.div`
 
 const Contact = (props) => {
     const { data } = props;
+    
     return (
         data.map(section => {
             const {contact} = section;
+            const typeArr = [contact.email, contact.linkedin, contact.github];
+            const tttleArr = ["e-mail", "Linkedin", "GitHub"];
+            const iconArr = [faEnvelope, faLinkedin, faGithub];
+
             return (
                 <Div key={"contact"}>
-                    <h1>{contact.title}</h1>
-                    <p>{contact.desc}</p>
-                    <Icons>                        
-                        <a href={contact.email} title="email">
-                            <FontAwesomeIcon icon={faEnvelope} />
-                        </a>
-                        <a href={contact.linkedin} title="Linkedin" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faLinkedin} />
-                        </a>
-                        <a href={contact.github} title="GitHub" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faGithub} />
-                        </a>
-                    </Icons>
+                     <VisibilitySensor once>
+                        {({ isVisible }) => (
+                            <>
+                                <Spring delay={300} to={{
+                                    opacity: isVisible ? 1 : 0,
+                                    transform: isVisible
+                                    ? "scale(1)"
+                                    : "scale(2)",
+                                }}>
+                                    {(props) => (
+                                        <h1 style={{ ...props }}>{contact.title}</h1>
+                                    )}
+                                </Spring>   
+                                <Spring config={{duration: 1000}} delay={600} to={{
+                                    opacity: isVisible ? 1 : 0
+                                }}>
+                                    {(props) => (
+                                        <p style={{ ...props }}>{contact.desc}</p>
+                                    )}
+                                </Spring>              
+                                
+                                <Icons> 
+                                    {
+                                        typeArr.map((item, index) => {
+                                            return(                                                
+                                                <Spring key={"s"+index} delay={400 * (index+1)} to={{
+                                                    opacity: isVisible ? 1 : 0
+                                                }}>
+                                                    {(props) => (
+                                                         <a style={{ ...props }} href={item} title={tttleArr[index]} target="_blank" rel="noopener noreferrer">
+                                                            <FontAwesomeIcon icon={iconArr[index]} />
+                                                        </a>
+                                                    )}
+                                                </Spring> 
+                                            )
+                                        })
+                                    }           
+                                </Icons>
+                            </>  
+                        )}
+                    </VisibilitySensor>              
                 </Div>
             )
         })
