@@ -1,14 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment, Suspense} from 'react';
 import './App.css';
 
 import { connect } from 'react-redux';
 import { getData } from './actions/index';
-
-import About from "./components/About.js";
-import Skills from "./components/Skills.js";
-import Projects from "./components/Projects.js";
-import Clients from "./components/Clients.js";
-import Contact from "./components/Contact.js";
 
 import styled from 'styled-components';
 import ScrollspyNav from "react-scrollspy-nav";
@@ -16,14 +10,18 @@ import { Navbar, Nav } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const About = React.lazy(() => import('./components/About'));
+const Skills = React.lazy(() => import('./components/Skills'));
+const Projects = React.lazy(() => import('./components/Projects'));
+const Clients = React.lazy(() => import('./components/Clients'));
+const Contact = React.lazy(() => import('./components/Contact'));
+
 const Main = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
   overflow-x: hidden;
   animation: fadein 2s;
+  
   div[data-nav] ul {
       display: flex;
       flex-direction: row;
@@ -32,11 +30,9 @@ const Main = styled.div`
       margin: 0;
       padding: 0;
   }
-  div[data-nav] li {
-    padding: 0 20px;
-  }
   div[data-nav] a {
-    font-size: 0.6em;
+    font-size: 0.6em; 
+    padding: 9px 20px 10px !important;
   }
   .is-active{
     background: #1e1e1e;
@@ -45,6 +41,7 @@ const Main = styled.div`
   }
   .bg-black{
     background-color: black;
+    padding: 0;
   }
 
   @media only screen and (max-width: 767px) {
@@ -106,14 +103,16 @@ class App extends Component {
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
-
-              <Div key="1">
-                <About data={data}/>
-                <div id="section_1"><Skills data={data}/></div>
-                <div id="section_2"><Projects data={data}/></div>
-                <div id="section_3"><Clients data={data}/></div>             
-                <div id="section_4"><Contact data={data}/></div>             
-              </Div>
+              
+              <Suspense fallback={<div>Loading...</div>}>
+                <Div key="1">
+                  <About data={data}/>
+                  <div id="section_1"><Skills data={data}/></div>
+                  <div id="section_2"><Projects data={data}/></div>
+                  <div id="section_3"><Clients data={data}/></div>             
+                  <div id="section_4"><Contact data={data}/></div>             
+                </Div>
+              </Suspense>
             </Fragment>
           :
             <p>loading..</p>
