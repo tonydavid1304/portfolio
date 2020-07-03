@@ -46,6 +46,12 @@
             "img":"./images/projects/verizon.jpg"
         },
         {
+            "title":"AutoZone",
+            "desc":"AutoZone is a portal which had to be refactored to responsive web design for support in Desktop, Mobile and tablet. The portal involves sale of automobile parts. Technologies involved are React, Redux, HTML5, CSS3 and Material UI. Worked on defect fixes, accessibility, flow errors and test cases.",
+            "thumb":"./images/projects/autozone_thumb.jpg",
+            "img":"./images/projects/autozone.jpg"
+        },
+        {
             "title":"Don Bosco Vaasaappu",
             "desc":"Don Bosco Vaasaappu is a website based on a cultural event held in Sri lanka to raise funds. The website was build responsively to support most devies. Powered using AngularJs, jQuery, HTML, CSS and BootStrap.",
             "thumb":"./images/projects/dbv_thumb.jpg",
